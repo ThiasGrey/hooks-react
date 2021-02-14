@@ -14,6 +14,9 @@ const Menu = props => (
                     <Link to="/useState">useState()</Link>
                 </li>
                 <li>
+                    <Link to="/useStateX">useStateX</Link>
+                </li>
+                <li>
                     <Link to="/useEffect">useEffect()</Link>
                 </li>
                 <li>
