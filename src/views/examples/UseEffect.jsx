@@ -15,7 +15,7 @@ function calcParImp(num) {
     const n = parseInt(num)
 
     if (n === 0) return "Nulo"
-    if (n % 2 == 0) {
+    if (n % 2 === 0) {
         return "Par"
     } else {
         return "Ímpar"
