@@ -1,26 +1,7 @@
 import React, { useReducer } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
-
-const initialState = {
-    cart: [],
-    products: [],
-    user: null,
-    //foco...
-    number: 0
-}
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'numberAdd2':
-            return {
-                ...state, number: state.number + 2
-            }
-        case 'login':
-            return { ...state, user: { name: action.payload } }
-        default:
-            return state
-    }
-}
+import {initialState, reducer} from '../../store';
+import { numberAdd2, login } from "../../store/actions";
 
 const UseReducer = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -38,15 +19,20 @@ const UseReducer = (props) => {
                     </span> :
                     <span className="text">
                         Sem usuário
-            </span>
+                    </span>
                 }
 
                 <span className="text">
                     {state.number}
                 </span>
                 <div>
-                    <button className="btn" onClick={() => dispatch({ type: 'login', payload: 'Maria' })}>Login</button>
-                    <button className="btn" onClick={() => dispatch({ type: 'numberAdd2' })}>+2</button>
+                    <button className="btn" onClick={() => login(dispatch, 'João')}>Login</button>
+                    <button className="btn" onClick={() => numberAdd2(dispatch)}>+2</button>
+                    <button className="btn" onClick={() => dispatch({ type: 'numberMulti7' })}>*7</button>
+                    <button className="btn" onClick={() => dispatch({ type: 'numberDiv25' })}>/25</button>
+                    <button className="btn" onClick={() => dispatch({ type: 'numberInt' })}>Inteiro</button>
+                    <button className="btn" onClick={() => dispatch({ type: 'numberAddN', payload: 5 })}>+5</button>
+                    <button className="btn" onClick={() => dispatch({ type: 'numberAddN', payload: -12 })}>-12</button>
                 </div>
             </div>
 
